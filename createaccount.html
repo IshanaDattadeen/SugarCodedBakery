@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Account</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #fdf6f0;
+      --bg-accent: #ffe5d9;
+      --bg-highlight: #f7c6a3;
+      --text-main: #4a2f2f;
+      --text-accent: #d3886b;
+      --button-bg: #e5bda5;
+      --button-hover: #d3886b;
+      --border-radius: 16px;
+      --shadow: 4px 4px 0 #d3886b;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-main);
+      font-family: 'Press Start 2P', cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 0.65rem;
+      text-decoration: none;
+      color: var(--text-main);
+      border: 2px solid var(--text-accent);
+      background: var(--button-bg);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      box-shadow: var(--shadow);
+      transition: all 0.2s ease;
+    }
+
+    .back-button:hover {
+      background-color: var(--text-accent);
+      color: white;
+    }
+
+    .form-container {
+      background: white;
+      padding: 3rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .form-container h1 {
+      text-align: center;
+      color: var(--text-accent);
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+      font-size: 0.75rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1.5rem;
+      border: 2px solid var(--bg-highlight);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-family: 'Press Start 2P', cursive;
+    }
+
+    .button {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      background-color: var(--button-bg);
+      color: var(--text-main);
+      border: 2px solid var(--text-accent);
+      text-align: center;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: all 0.2s ease;
+      font-size: 0.75rem;
+    }
+
+    .button:hover {
+      background-color: var(--button-hover);
+      color: white;
+    }
+
+    .extra-links {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.6rem;
+    }
+
+    .extra-links a {
+      display: block;
+      text-decoration: none;
+      color: var(--text-main);
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 500px) {
+      .form-container {
+        padding: 2rem;
+        margin: 1rem;
+      }
+
+      .form-container h1 {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="javascript:history.back()" class="back-button">← BACK</a>
+  <div class="form-container">
+    <h1>Create Account</h1>
+    <form>
+      <label for="username">USERNAME</label>
+      <input type="text" id="username" name="username" required />
+
+      <label for="email">EMAIL</label>
+      <input type="email" id="email" name="email" required pattern=".+@.+\.com" title="Email must end in .com" />
+
+      <label for="password">PASSWORD</label>
+      <input type="password" id="password" name="password" required />
+
+      <label for="confirm-password">CONFIRM PASSWORD</label>
+      <input type="password" id="confirm-password" name="confirm-password" required />
+
+      <button type="submit" class="button">SIGN UP</button>
+    </form>
+    <div class="extra-links">
+      <a href="account.html">Already have an account? Sign In</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Locations | Sugar Coded</title>
+
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="images/favicon.jpg">
+
+  <!-- Script -->
+  <script src="script.js" defer></script>
+
+  <!-- Styles -->
+  <style>
+    :root {
+      --bg-main: #fdf6f0;
+      --bg-accent: #ffe5d9;
+      --bg-highlight: #f7c6a3;
+      --text-main: #4a2f2f;
+      --text-accent: #d3886b;
+      --button-bg: #e5bda5;
+      --button-hover: #d3886b;
+      --border-radius: 16px;
+      --shadow: 4px 4px 0 #d3886b;
+    }
+
+body {
+  margin: 0;
+  font-family: 'Press Start 2P', cursive;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+header {
+  background-color: var(--bg-highlight);
+  text-align: center;
+  padding: 1em;
+}
+  
+header img {
+  max-height: 250px;
+  vertical-align: middle;
+}
+
+.logo-hover {
+  max-height: 250px;
+  vertical-align: middle;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-hover:hover {
+  transform: scale(1.05);
+}
+
+  nav.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-accent);
+  padding: 1em 1.5em;
+  position: relative;
+}
+
+.nav-left,
+.nav-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.nav-center {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-right {
+  justify-content: flex-end;
+  list-style: none;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-accent);
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.5em 0.75em;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.nav-link:hover {
+  color: white;
+  background-color: var(--button-hover);
+}
+
+    /* Main Content */
+    main {
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero {
+      background: var(--bg-accent);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .hero h1 {
+      color: var(--text-accent);
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background-color: var(--button-bg);
+      color: var(--text-main);
+      text-decoration: none;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      transition: background 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--button-hover);
+      color: white;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      right: -400px;
+      top: 0;
+      width: 300px;
+      height: 100%;
+      background-color: var(--bg-accent);
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      transition: right 0.3s ease;
+      z-index: 999;
+    }
+
+    .cart-drawer.open {
+      right: 0;
+    }
+
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      z-index: 998;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+      }
+      .nav-links li {
+        margin: 0.5em 0;
+      }
+      .nav-icons {
+        margin-top: 0.5em;
+      }
+    }
+
+.store-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.store {
+  background-color: white;
+  border: 2px dashed #ecbb73;
+  border-radius: 15px;
+  padding: 20px;
+  width: 220px;
+  transition: background-color 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+
+
+.store:hover {
+  transform: scale(1.05);
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+  border-color: var(--button-hover);
+}
+
+
+.store img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.store h3 {
+  font-size: 14px;
+  color: #333;
+  margin-top: 0;
+}
+
+/*-------------------------------------------------------------------------*/
+ /* Cart Drawer */
+ .hero {
+  background: var(--bg-accent);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  max-width: 700px;
+  width: 100%;
+}
+
+.hero h1 {
+   color: var(--text-accent);
+   font-size: 1.25rem;
+   margin-bottom: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--button-bg);
+  color: var(--text-main);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--button-hover);
+  color: white;
+}
+
+.cart-drawer {
+  position: fixed;
+  right: -400px;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background-color: var(--bg-accent);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+.cart-drawer.open {
+  right: 0;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  z-index: 998;
+}
+
+
+/*----------------------------------------------------------------------*/
+/*Footer*/
+footer {
+  background-color: var(--bg-highlight);
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-main);
+  font-size: 0.75rem;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-center p {
+  margin: 0;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.social-logo {
+  width: 32px;
+  height: 32px;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease, transform 0.2s ease;
+}
+
+.social-logo:hover {
+  filter: none;
+  transform: scale(1.1);
+}
+
+.contact-info p {
+  margin: 0.25rem 0;
+}
+
+
+  </style>
+</head>
+
+<body>
+  
+  <header>
+<!-- Logo with hover effect -->
+  <a href="index.html" style="text-decoration: none; color: inherit; display: inline-block;">
+  <img src="images/SugarCodedLogo.jpg" alt="Logo" class="logo-hover" />
+  </a>
+    <h3>From our Oven, to your Home</h3>
+    <h5>since 1992</h5>
+  </header>
+
+
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-left">
+    <a href="index.html" class="nav-link">Home</a>
+  </div>
+  <ul class="nav-center">
+    <li><a href="menu.html" class="nav-link">Menu</a></li>
+    <li><a href="locations.html" class="nav-link">Locations</a></li>
+    <li><a href="consultations.html" class="nav-link">Consult</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+  </ul>
+  <ul class="nav-right">
+    <li><a href="#" id="cartLink" class="nav-link">Cart</a></li>
+    <li><a href="account.html" class="nav-link">Profile</a></li>
+  </ul>
+</nav>
+
+
+
+
+<!-- Main Content -->
+<main>
+  <h1>Our Locations</h1>
+
+  <div class="store-list">
+    <div class="store" >
+      <img src="images/Store1.jpg" alt="Pixel Plaza">
+      <h3></h3>
+    </div>
+
+    <div class="store" >
+      <img src="images/store2.jpg" alt="Sugar Town">
+      <h3></h3>
+    </div>
+
+    <div class="store" >
+      <img src="images/store3.jpg" alt="Candyland Corner">
+      <h3></h3>
+    </div>
+
+  </div>
+</main>
+
+<!-- Cart Drawer -->
+<div id="overlay"></div>
+
+<div id="cartDrawer" class="cart-drawer">
+  <h2>Your Cart</h2>
+  <div id="cartItems"></div>
+  <button class="btn" id="continueShoppingBtn">Continue Shopping</button>
+</div>
+
+
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-center">
+      <p>&copy; 2025 Sugar Coded Bakery. All rights reserved.</p>
+    <div class="socials">
+      <a href="www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="./images/facebook-icon.jpg" alt="Facebook Logo" class="social-logo"></a>
+       <a href="www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="./images/instagram-icon.jpg" alt="Instagram Logo" class="social-logo"></a>
+       <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&amp;pp=ygUIcmlja3JvbGw%3D" target="_blank" rel="noopener noreferrer"><img src="./images/whatsapp-icon.jpg" alt="WhatsApp Logo" class="social-logo"></a>
+     </div>
+   </div>
+    <div class="contact-info">
+      <p>Tel: +1(868) 726 - 8989</p>
+      <p>Email: SugarCoded@gmail.com</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const cartLink = document.getElementById('cartLink');
+  const cartDrawer = document.getElementById('cartDrawer');
+  const overlay = document.getElementById('overlay');
+  const continueBtn = document.getElementById('continueShoppingBtn');
+
+  cartLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    cartDrawer.classList.toggle('open');
+    overlay.style.display = cartDrawer.classList.contains('open') ? 'block' : 'none';
+  });
+
+  continueBtn.addEventListener('click', () => {
+    cartDrawer.classList.remove('open');
+    overlay.style.display = 'none';
+  });
+
+  overlay.addEventListener('click', () => {
+    cartDrawer.classList.remove('open');
+    overlay.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>

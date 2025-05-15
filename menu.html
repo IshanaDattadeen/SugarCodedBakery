@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu</title>
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="images/favicon.jpg">
+  <!-- Script -->
+  <script src="script.js" defer></script>
+
+  <!-- Styles -->
+  <style>
+    /* Theme */
+    :root {
+      --bg-main: #fdf6f0;
+      --bg-accent: #ffe5d9;
+      --bg-highlight: #f7c6a3;
+      --text-main: #4a2f2f;
+      --text-accent: #d3886b;
+      --button-bg: #e5bda5;
+      --button-hover: #d3886b;
+      --border-radius: 16px;
+      --shadow: 4px 4px 0 #d3886b;
+    }
+
+body {
+  margin: 0;
+  font-family: 'Press Start 2P', cursive;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+header {
+  background-color: var(--bg-highlight);
+  text-align: center;
+  padding: 1em;
+}
+  
+header img {
+  max-height: 250px;
+  vertical-align: middle;
+}
+.logo-hover {
+  max-height: 250px;
+  vertical-align: middle;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-hover:hover {
+  transform: scale(1.05);
+}
+
+
+nav.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-accent);
+  padding: 1em 1.5em;
+  position: relative;
+}
+
+.nav-left,
+.nav-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.nav-center {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-right {
+  justify-content: flex-end;
+  list-style: none;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-accent);
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.5em 0.75em;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.nav-link:hover {
+  color: white;
+  background-color: var(--button-hover);
+}
+
+
+/* Header Images */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 204px; 
+  border-bottom: 5px solid #e5bda5;
+}
+
+
+.foreground-image {
+  position: absolute;
+  width: 650px;
+  height: 240px;
+  object-fit: cover;
+}
+
+.header-image-menu2 {
+  border-bottom: 5px solid #e5bda5;
+}
+
+/*--------------------------------------------------------------------------------*/
+/* Main Layout */
+.main {
+  display: flex;
+}
+
+
+.menu-section {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*--------------------------------------------------------------------------------*/
+/*Menu*/
+.menu-section {
+      padding: 2rem;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      color: var(--text-accent);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+
+    .menu-item {
+      background-color: white;
+      border: 2px dashed #ecbb73;
+      border-radius: 15px;
+      padding: 20px;
+      width: 220px;
+      transition: background-color 0.3s, transform 0.3s;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .menu-item:hover {
+      transform: scale(1.05);
+      box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+      border-color: var(--button-hover);
+    }
+
+    .menu-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .menu-item h3 {
+      font-size: 14px;
+      margin: 0 0 1rem;
+    }
+
+
+/* Menu Grid */
+.menu-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 2rem;
+  justify-content: center;
+}
+
+
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  border: 5px solid #f7c6a3;
+  box-shadow: 8px 8px 0px #d9a68d;
+  position: relative;
+  border-radius: 20px;
+  text-align: center;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked + .modal {
+  display: flex;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #d3886b;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.modal img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+}
+
+.modal h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #6b4c3b;
+}
+
+.modal p {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: #6b4c3b;
+}
+
+/*-------------------------------------------------------------------------*/
+ /* Cart Drawer */
+ .hero {
+  background: var(--bg-accent);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  max-width: 700px;
+  width: 100%;
+}
+
+.hero h1 {
+   color: var(--text-accent);
+   font-size: 1.25rem;
+   margin-bottom: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--button-bg);
+  color: var(--text-main);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--button-hover);
+  color: white;
+}
+
+.cart-drawer {
+  position: fixed;
+  right: -400px;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background-color: var(--bg-accent);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+.cart-drawer.open {
+  right: 0;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  z-index: 998;
+}
+
+
+
+/*-------------------------------------------------------------------------*/
+/* reciept page */
+.receipt-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+  background-color: #f8f4f1;
+}
+
+.receipt {
+  background-color: #fff8f0;
+  border: 3px solid #b17245;
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+  font-family: 'Press Start 2P', cursive;
+  color: #4a3f35;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.receipt-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #4a2f2f;
+  margin-bottom: 0.5rem;
+}
+
+.thank-you {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.receipt-meta p {
+  font-size: 0.75rem;
+  margin: 0.2rem 0;
+}
+
+.receipt-table {
+  width: 100%;
+  margin: 1rem 0;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+
+.receipt-table th,
+.receipt-table td {
+  border-bottom: 1px dotted #a14a17;
+  text-align: left;
+  padding: 0.5rem 0;
+}
+
+.total-line {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: right;
+  margin-top: 1rem;
+  border-top: 2px solid #a14a17;
+  padding-top: 0.5rem;
+}
+
+.payment-methods {
+  margin: 1rem 0;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.notify {
+  text-align: center;
+  font-size: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.barcode {
+  height: 40px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    to right,
+    #a14a17,
+    #a14a17 2px,
+    transparent 2px,
+    transparent 5px
+  );  
+}
+/*---------------------------------------------------------*/
+
+.hero {
+  background: var(--bg-accent);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  max-width: 700px;
+  width: 100%;
+}
+
+.hero h1 {
+   color: var(--text-accent);
+   font-size: 1.25rem;
+   margin-bottom: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--button-bg);
+  color: var(--text-main);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--button-hover);
+  color: white;
+}
+
+.cart-drawer {
+  position: fixed;
+  right: -400px;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background-color: var(--bg-accent);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+.cart-drawer.open {
+  right: 0;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  z-index: 998;
+}
+
+/*----------------------------------------------------------------------*/
+/*Footer*/
+footer {
+  background-color: var(--bg-highlight);
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-main);
+  font-size: 0.75rem;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-center p {
+  margin: 0;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.social-logo {
+  width: 32px;
+  height: 32px;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease, transform 0.2s ease;
+}
+
+.social-logo:hover {
+  filter: none;
+  transform: scale(1.1);
+}
+
+.contact-info p {
+  margin: 0.25rem 0;
+}
+
+.menu-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.btn-menu {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.6rem;
+  background-color: var(--button-bg);
+  color: var(--text-main);
+  border: none;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  flex: 1;
+  transition: background-color 0.2s ease;
+}
+
+.btn-menu:hover {
+  background-color: var(--button-hover);
+  color: white;
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+<!-- Logo with hover effect -->
+  <a href="index.html" style="text-decoration: none; color: inherit; display: inline-block;">
+  <img src="images/SugarCodedLogo.jpg" alt="Logo" class="logo-hover" />
+  </a>
+    <h3>From our Oven, to your Home</h3>
+    <h5>since 1992</h5>
+  </header>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-left">
+    <a href="index.html" class="nav-link">Home</a>
+  </div>
+  <ul class="nav-center">
+    <li><a href="menu.html" class="nav-link">Menu</a></li>
+    <li><a href="locations.html" class="nav-link">Locations</a></li>
+    <li><a href="consultations.html" class="nav-link">Consult</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+  </ul>
+  <ul class="nav-right">
+    <li><a href="#" id="cartLink" class="nav-link">Cart</a></li>
+    <li><a href="account.html" class="nav-link">Profile</a></li>
+  </ul>
+</nav>
+  
+<div style="text-align: center;" class="image-container">
+  <img class="header-image-menu1" src="./images/bakery counter.jpg" alt="bakery counter" width="650px" height="200px">
+</div>
+
+
+    
+<!-- Main Content -->
+<main>
+
+  <div class="menu-list">
+
+    <!-- Breads -->
+    <section class="menu-section" id="breads">
+      <h2 class="menu-title">Breads</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="images/brioche.jpg" >
+          <h3>Brioche</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/challah.jpg" >
+          <h3>Challah</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/begal.jpg" >
+          <h3>Begal</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/hot cross buns.jpg" >
+          <h3>Hot Cross Buns</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cakes -->
+    <section class="menu-section" id="cakes">
+      <h2 class="menu-title">Cakes</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="images/coffe tiramisu.jpg" >
+          <h3>Coffee Tiramisu</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/japenese roll cake.jpg" >
+          <h3>Strawberry Japanese Roll Cake</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/chocolate fudge cake.jpg" >
+          <h3>Chocolate Fudge Cake</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cookies -->
+    <section class="menu-section" id="cookies">
+      <h2 class="menu-title">Cookies</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="images/chocolate chip.jpg" >
+          <h3>Chocolate Chip Cookies</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/double chocolate cookies.jpg" >
+          <h3>Double Chocolate Cookies</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/rashberry cheesecake cookies.jpg" >
+          <h3>Rasberry Cheesecake Cookie</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frozen Desserts -->
+    <section class="menu-section" id="frozendesserts">
+      <h2 class="menu-title">Frozen Desserts</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="images/oreo ice cream sandwich.jpg" >
+          <h3>Oreo Ice Cream Sandwich</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/chocolate chesecake.jpg" >
+          <h3>Chocolate Frozen Cheesecake</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/sorbert.jpg" >
+          <h3>Sorbet Cup</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sandwiches -->
+    <section class="menu-section" id="sandwiches">
+      <h2 class="menu-title">Sandwiches</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="images/grilled chicken.jpg" >
+          <h3>Grilled Chicken Panini</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/tuna melt.jpg" >
+          <h3>Tuna Melt</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/toasted veggie delight.jpg" >
+          <h3>Toated Veggie Delight</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Drinks -->
+    <section class="menu-section" id="drinks">
+      <h2 class="menu-title">Drinks</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="images/icedcoffee.jpg" alt="Iced Coffee">
+          <h3>Iced Coffee</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/strawberry smoothie.jpg" >
+          <h3>Fruit Smoothie</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/cherry refresher.jpg" >
+          <h3>Cherry Refesher</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <img src="images/hot chocolate.jpg" alt="Hot Chocolate">
+          <h3>Hot Chocolate</h3>
+          <div class="menu-buttons">
+            <button class="btn-menu add-to-cart">Add to Cart</button>
+            <button class="btn-menu view-details">Details</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</main>
+
+
+<div> <img class= "header-image-menu2" src="./images/recieptbanner.jpg" alt="reciept banner" width=100% height="200px"> </div>
+
+<section class="reciept">
+ <div class="receipt-container">
+  <div class="receipt">
+    <h1 class="receipt-title">Receipt</h1>
+    <p class="thank-you">Thank you for your purchase!</p>
+  <div class="receipt-meta">
+    <p>Order No: ..........</p>
+    <p>Date: ..........</p>
+  </div>
+  <table class="receipt-table">
+    <thead>
+    <tr><th>Item</th><th>Qty</th><th>Price</th></tr>
+    </thead>
+  <tbody>
+<!-- Repeatable rows -->
+    <tr><td>Pixel Pin</td><td>2</td><td>$10.00</td></tr>
+    </tbody>
+    </table>
+    <p class="total-line">Total: $20.00</p>
+  <div class="payment-methods">
+    <span>♡ Cash</span>
+    <span>♡ Card</span>
+    <span>♡ E-Wallet</span>
+  </div>
+   <p class="notify">Upon arrival, notify me through:</p>
+  <div class="barcode"></div>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- Cart Drawer -->
+<div id="overlay"></div>
+
+<div id="cartDrawer" class="cart-drawer">
+  <h2>Your Cart</h2>
+  <div id="cartItems"></div>
+  <button class="btn" id="continueShoppingBtn">Continue Shopping</button>
+</div>
+
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-center">
+      <p>&copy; 2025 Sugar Coded Bakery. All rights reserved.</p>
+    <div class="socials">
+      <a href="www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="./images/facebook-icon.jpg" alt="Facebook Logo" class="social-logo"></a>
+       <a href="www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="./images/instagram-icon.jpg" alt="Instagram Logo" class="social-logo"></a>
+       <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&amp;pp=ygUIcmlja3JvbGw%3D" target="_blank" rel="noopener noreferrer"><img src="./images/whatsapp-icon.jpg" alt="WhatsApp Logo" class="social-logo"></a>
+     </div>
+   </div>
+    <div class="contact-info">
+      <p>Tel: +1(868) 726 - 8989</p>
+      <p>Email: SugarCoded@gmail.com</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const cartLink = document.getElementById('cartLink');
+  const cartDrawer = document.getElementById('cartDrawer');
+  const overlay = document.getElementById('overlay');
+  const continueBtn = document.getElementById('continueShoppingBtn');
+
+  cartLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    cartDrawer.classList.toggle('open');
+    overlay.style.display = cartDrawer.classList.contains('open') ? 'block' : 'none';
+  });
+
+  continueBtn.addEventListener('click', () => {
+    cartDrawer.classList.remove('open');
+    overlay.style.display = 'none';
+  });
+
+  overlay.addEventListener('click', () => {
+    cartDrawer.classList.remove('open');
+    overlay.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>

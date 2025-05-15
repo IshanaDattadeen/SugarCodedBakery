@@ -1,0 +1,95 @@
+body {
+    font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    background-color:rgb(204, 152, 96);
+  }
+
+  header {
+    background-color: #6b4c3b;
+  }
+
+  header h1 {
+    color: burlywood;
+    text-decoration: none;
+    margin: 0px;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  header h4 {
+    color: burlywood;
+    text-decoration: none;
+    margin: 0px;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .navbar {
+    background-color: #e5bda5;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+  }
+  
+  .nav-links a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .nav-icons img {
+    width: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .hero {
+    text-align: center;
+    padding: 80px 20px;
+  }
+  
+  .btn {
+    background: #ff8bbd;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+  
+  .cart-drawer {
+    position: fixed;
+    right: -400px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background: white;
+    box-shadow: -3px 0 5px rgba(0,0,0,0.2);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+  }
+  
+  .cart-drawer.open {
+    right: 0;
+  }
+
+  .cart-head {
+    text-align: center;
+    color: #6b4c3b;
+  }
+  
+  footer {
+    text-align: center;
+    background: #ffe0ec;
+    padding: 10px;
+  }
+  
+  footer img {
+    width: 100%;
+    height: auto;
+  }
+  
