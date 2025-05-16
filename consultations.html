@@ -298,7 +298,7 @@ footer {
 
   <form action="thankyou.html" method="GET">
     <input type="text" placeholder="Name" required>
-    <input type="email" placeholder="Email" required>
+    <input type="email" placeholder="Email" required id="email" name="email" required pattern=".+@.+\.com" title="Email must end in .com" />
     <input type="tel" placeholder="Phone" required>
     <select required>
       <option value="">Select Event Type</option>

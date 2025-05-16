@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thank You | Sugar Coded</title>
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="images/favicon.jpg">
+<!-- Script -->
+<script src="script.js" defer></script>
+
+<!-- Styles -->
+<style>
+/* Theme */
+:root {
+  --bg-main: #fdf6f0;
+  --bg-accent: #ffe5d9;
+  --bg-highlight: #f7c6a3;
+  --text-main: #4a2f2f;
+  --text-accent: #d3886b;
+  --button-bg: #e5bda5;
+  --button-hover: #d3886b;
+  --border-radius: 16px;
+  --shadow: 4px 4px 0 #d3886b;
+}
+
+body {
+  background-color: var(--bg-main);
+  font-family: 'Press Start 2P', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.thankyou-card {
+  background-color: var(--bg-accent);
+  border: 2px solid var(--text-accent);
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
+  padding: 40px;
+  text-align: center;
+  width: 320px;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: var(--text-main);
+}
+
+.subtext {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: var(--text-accent);
+}
+
+.details p {
+  margin: 4px 0;
+  color: var(--text-main);
+}
+
+.message {
+  margin: 20px 0;
+  color: var(--text-main);
+}
+
+.barcode {
+  margin-top: 25px;
+  height: 30px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--text-main) 0px,
+    var(--text-main) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+</style>
+</head>
+<body>
+<div class="thankyou-card">
+    <h1>Thank You!</h1>
+    <p class="subtext">Your form has been received.</p>
+
+
+    <div class="message">
+      <p>We appreciate your support.</p>
+      <p>We will contact you as quickly as possible 🍰</p>
+    </div>
+
+    <div class="barcode"></div>
+  </div>
+
+
+</body>
+</html>
